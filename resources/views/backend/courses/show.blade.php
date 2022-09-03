@@ -1,0 +1,92 @@
+<x-backend.layout.master>
+    <x-slot:title>
+        Courses
+        </x-slot:>
+        <x-slot:pagetitle>
+            Courses
+            </x-slot:>
+            <div class="card mb-4">
+
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    course Details
+                    <a href="{{ route('courses.create') }}" class="btn btn-sm btn-primary">Add New</a>
+                </div>
+                <div class="card-body">
+                    @if (session('massage'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('massage') }}
+
+                        </div>
+                    @endif
+                    <table id="datatablesSimple">
+                        <thead>
+                     
+                            <tr>
+                                <th>Course Name</th>
+                                <th>{{ $course->title}}</th>
+                            </tr>
+                            <tr>
+                                <th>Batch No</th>
+                                <th>{{ $course->batch_no }}</th>
+                            </tr>
+                            <tr>
+                                <th>Class start date</th>
+                                <th>{{ $course->class_start_date}}</th>
+                            </tr>
+                            <tr>
+                                <th>Class end date</th>
+                                <th>{{ $course->class_end_date}}</th>
+                            </tr>
+                            <tr>
+                                <th>Instructor Name</th>
+                                <th>{{$course->instructor_name}}</th>
+                            </tr>
+                            <tr>
+                                <th>Baner</th>
+                                <th><img src="{{ asset('storage/courses/'.$course->baner) }}" alt="{{$course->title}} Image" height="200"></th>
+                            </tr>
+                           
+                            <tr>
+                                <th>Is active</th>
+                                <th>{{ $course->is_active }}</th>
+                            </tr>
+                            <tr>
+                                <th>Course Type</th>
+                                <th>{{ $course->course_type }}</th>
+                            </tr>
+
+                            <tr>
+
+                                <th>created_at</th>
+                                <th>{{ $course->created_at }}</th>
+                            </tr>
+                            <tr>
+
+                                <th>updated_at</th>
+                                <th>{{ $course->updated_at }}</th>
+                            </tr>
+                            <tr>
+
+                                <th>deleted_at</th>
+                                <th>{{ $course->updated_at }}</th>
+                            </tr>
+                        </thead>
+
+
+                    </table>
+                </div>
+            </div>
+
+            @push('css')
+                <style>
+                    /* body{
+                        background-color: blue;
+                    } */
+                </style>
+            @endpush
+            @push('js')
+                <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+                <script src="{{ asset('ui/backend/js/datatables-simple-demo.js') }}"></script>
+            @endpush
+</x-backend.layout.master>
